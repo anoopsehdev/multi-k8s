@@ -55,11 +55,11 @@ app.get('/values/current', async (req, res) => {
 app.post('/values', async (req, res) => {
   const index = req.body.index;
 
-  if (parseInt(index) > 40) {
+  if (parseInt(index) > 50) {
     return res.status(422).send('Index too high');
   }
 
-  redisClient.hset('values', index, 'Nothing yet!');
+  redisClient.hset('values', index, 'Nothing Calculated yet!');
   redisPublisher.publish('insert', index);
   pgClient.query('INSERT INTO values(number) VALUES($1)', [index]);
 
@@ -67,5 +67,5 @@ app.post('/values', async (req, res) => {
 });
 
 app.listen(5000, (err) => {
-  console.log('Listening');
+  console.log('Listening on Port 5000');
 });
