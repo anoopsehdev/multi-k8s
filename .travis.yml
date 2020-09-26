@@ -1,0 +1,15 @@
+services:
+    - docker
+
+before_install:
+    - curl https://sdk.cloud.google.com | bash > /dev/null;
+    - source $HOME/google-cloud-sdk/path.bash.inc
+    - gcloud componenets update kubectl
+    - gloud auth activate-service-account --key-file service-account.json
+    
+    - docker build -t anoopsehdev/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true anoopsehdev/docker-react npm test
+
+# deploy:
