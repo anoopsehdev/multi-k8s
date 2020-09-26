@@ -2,6 +2,10 @@ docker build -t anoopsehdev/multi-client:latest -t anoopsehdev/multi-client:$SHA
 docker build -t anoopsehdev/multi-server:latest -t anoopsehdev/multi-server:$SHA -f ./server/Dockerfile ./server
 docker build -t anoopsehdev/multi-worker:latest -t anoopsehdev/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 
+# docker build -t anoopsehdev/multi-client:latest -t anoopsehdev/multi-client:$SHA -f ./client/Dockerfile ./client
+# docker build -t anoopsehdev/multi-server:latest -t anoopsehdev/multi-server:$SHA -f ./server/Dockerfile ./server
+# docker build -t anoopsehdev/multi-worker:latest -t anoopsehdev/multi-worker:$SHA -f ./worker/Dockerfile ./worker
+
 
 docker push anoopsehdev/multi-client:latest
 docker push anoopsehdev/multi-server:latest
